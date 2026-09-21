@@ -1,0 +1,205 @@
+{
+  "registry_version": "2026-09-20",
+  "owner": "合曜 AI CellUniverse",
+  "purpose": "tracking downloaded scFM weights + training data assets",
+
+  "sc_foundation_models": [
+    {
+      "name": "CellVQ (ChrisCell)",
+      "repo": "https://github.com/A4Bio/CellVQ",
+      "weights": "A4Bio/CellVQ (HF)",
+      "license": "MIT",
+      "size_mb_estimate": 1300,
+      "status": "clone_pending",
+      "use_case": "可解释单细胞 VQ 量化(SOFT VQ CODE),我们 D 方向主力"
+    },
+    {
+      "name": "TranscriptFormer",
+      "repo": "https://github.com/czi-ai/transcriptformer",
+      "weights": "czi-ai/transcriptformer (HF, MIT)",
+      "license": "MIT",
+      "size_mb_estimate": 1100,
+      "status": "clone_pending",
+      "use_case": "跨物种通用 backbone (B 方向 + C +)"
+    },
+    {
+      "name": "UCE",
+      "repo": "https://github.com/snap-stanford/UCE",
+      "weights": "snap-stanford/UCE (HF)",
+      "license": "MIT",
+      "size_mb_estimate": 850,
+      "status": "clone_pending",
+      "use_case": "zero-shot cell embedding baseline"
+    },
+    {
+      "name": "State (Arc Institute)",
+      "repo": "https://github.com/ArcInstitute/state",
+      "weights": "arcinstitute on HF",
+      "license": "CC BY-NC-SA (非商用)",
+      "size_mb_estimate": 1500,
+      "status": "clone_pending",
+      "use_case": "L3 扰动预测, 仅研究用"
+    },
+    {
+      "name": "X-Cell (Xaira)",
+      "repo": "https://github.com/Xaira-Therapeutics/X-Cell",
+      "weights": "Xaira-Therapeutics/X-Cell (HF)",
+      "license": "CC BY-NC-SA (非商用)",
+      "size_mb_estimate": 220,
+      "status": "clone_pending",
+      "use_case": "Mini 已 HF 开源"
+    },
+    {
+      "name": "scGPT",
+      "repo": "https://github.com/bowang-lab/scGPT",
+      "weights": "jkobject/scGPT (HF)",
+      "license": "MIT",
+      "size_mb_estimate": 200,
+      "status": "clone_pending",
+      "use_case": "另一个 L1 baseline"
+    },
+    {
+      "name": "Geneformer",
+      "repo": "https://github.com/ctheodoris/Geneformer",
+      "weights": "ctheodoris/Geneformer (HF)",
+      "license": "MIT",
+      "size_mb_estimate": 90,
+      "status": "clone_pending",
+      "use_case": "基因排序表征"
+    },
+    {
+      "name": "scFoundation",
+      "repo": "https://github.com/biomap-research/scFoundation",
+      "weights": "biomap-research/scFoundation (HF)",
+      "license": "MIT",
+      "size_mb_estimate": 350,
+      "status": "clone_pending",
+      "use_case": "read-depth aware 编码"
+    },
+    {
+      "name": "scLong",
+      "repo": "https://github.com/ONERAI/scLong",
+      "weights": "ONERAI/scLong (HF)",
+      "license": "MIT",
+      "size_mb_estimate": 2200,
+      "status": "clone_pending",
+      "use_case": "长上下文 + GO 知识图"
+    },
+    {
+      "name": "CellVQ-paper / scPRINT-2",
+      "repo": "https://github.com/cantinilab/scPRINT-2",
+      "weights": null,
+      "license": "MIT",
+      "size_mb_estimate": 600,
+      "status": "clone_pending",
+      "use_case": "GRN inference compare"
+    }
+  ],
+
+  "training_data_catalog": [
+    {
+      "name": "PBMC 68k (real)",
+      "type": "scRNA-seq",
+      "scale": "700 cells",
+      "via": "scanpy.datasets.pbmc68k()",
+      "status": "pipeline_ready"
+    },
+    {
+      "name": "PBMC 10k (10x Genomics)",
+      "type": "scRNA-seq",
+      "scale": "~10,000 cells",
+      "via": "scanpy.datasets.pbmc10k() OR 10x Genomics website",
+      "status": "fetch_ready"
+    },
+    {
+      "name": "CZ CELLxGENE Discover Census",
+      "type": "scRNA-seq atlas",
+      "scale": "~65M cells, 50+ organisms, 50+ tissues",
+      "via": "cellxgene_census Python package OR Census API",
+      "license": "Open (varies by subcollection)",
+      "status": "fetch_pending (large, on-demand)"
+    },
+    {
+      "name": "Tabula Sapiens",
+      "type": "scRNA-seq atlas (human)",
+      "scale": "~24M cells, 24 tissues",
+      "via": "cellxgene_census",
+      "license": "CC BY 4.0",
+      "status": "fetch_pending"
+    },
+    {
+      "name": "Tahoe-100M",
+      "type": "drug-perturbed scRNA-seq",
+      "scale": "100M cells, 50 cancer lines × 1100 drugs",
+      "via": "arcinstitute HF",
+      "license": "CC0 (datasets) / model weights NC",
+      "status": "fetch_pending (L3 用)"
+    },
+    {
+      "name": "DoRothEA / RegNetwork (TF-target)",
+      "type": "GRN",
+      "scale": "~200k interactions",
+      "via": "https://omnipathdb.org REST API",
+      "license": "Open",
+      "status": "downloading"
+    },
+    {
+      "name": "MSigDB Hallmark (v2023)",
+      "type": "pathway gene set",
+      "scale": "50 hallmark × 30-200 genes",
+      "via": "https://www.gsea-msigdb.org/gsea/msigdb/",
+      "license": "Open",
+      "status": "downloading"
+    },
+    {
+      "name": "Reactome (Pathway dump)",
+      "type": "pathway graph",
+      "scale": "~2500 pathways",
+      "via": "https://reactome.org/ContentService/",
+      "license": "CC BY 4.0",
+      "status": "downloading"
+    },
+    {
+      "name": "ESM-2 (protein language model)",
+      "type": "protein embeddings",
+      "scale": "650M params / 8B params",
+      "via": "facebook/esm2_t12_35M_ur50d, t30_150M, t33_650M (HF)",
+      "license": "MIT",
+      "status": "fetch_pending (used in TF / UCE gene tokenization)"
+    },
+    {
+      "name": "Gene Ontology (GO) full",
+      "type": "ontology",
+      "scale": "~40,000 terms",
+      "via": "https://geneontology.org/",
+      "license": "CC BY 4.0",
+      "status": "fetch_pending"
+    },
+    {
+      "name": "JASPAR (TF motifs)",
+      "type": "DNA motifs",
+      "scale": "~1900 PFMs",
+      "via": "https://jaspar.elixir.no/",
+      "license": "CC BY 4.0",
+      "status": "fetch_pending"
+    },
+    {
+      "name": "Allen Brain Map scRNA",
+      "type": "scRNA-seq (brain)",
+      "scale": "~10M cells, mouse + human",
+      "via": "https://portal.brain-map.org/",
+      "license": "varies",
+      "status": "fetch_pending (advanced)"
+    },
+    {
+      "name": "GTEx (bulk)",
+      "type": "bulk RNA-seq",
+      "scale": "varies",
+      "via": "https://gtexportal.org/",
+      "license": "varies",
+      "status": "fetch_pending (annotation)"
+    }
+  ],
+
+  "download_log": []
+}

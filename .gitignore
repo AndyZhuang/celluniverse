@@ -1,0 +1,74 @@
+# ============================================================
+# CellUniverse — root .gitignore
+# Push only what builds the project. Skip heavy / local-only.
+# ============================================================
+
+# --- Node / Next.js ---
+node_modules/
+.next/
+.pnpm-store/
+.npm/
+.eslintcache
+
+# --- Python ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+*.egg-info/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+
+# --- Build artifacts (historical Next.js out dirs) ---
+# NOTE: `web/out5/` IS the production build we ship for static demos.
+# Add new out dirs to this block when they're superseded.
+web/out/
+web/out2/
+web/out3/
+web/out4/
+
+# --- Heavy / local-only repos (re-cloneable from origin) ---
+backend/models-repo/           # CellVQ source clones + LFS fragments (~134MB+)
+backend/models-repo/**
+backend/models-repo/**/_trashed_*/
+backend/models/                # local model mirrors incl. cellvq_repo
+backend/models-hf/             # HuggingFace cache (potentially many GB)
+backend/data/                  # raw h5ad / parquet scratch
+**/_trashed_*/                 # any leftover from sandboxed deletes
+
+# --- Local-only deploy helpers ---
+outputs/                       # mcode.deploy staging dirs
+src_for_deploy/                # copy-of-source used to bypass 200MB source_path limit
+
+# --- Logs / locks ---
+*.log
+*.err
+*.out
+*.tmp
+*.swp
+*.lock
+*.pid
+.hypothesis/
+
+# --- Editor / OS ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Secrets (never commit) ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials/
+
+# --- TypeScript build info ---
+*.tsbuildinfo
+next-env.d.ts.bak
